@@ -76,6 +76,7 @@ public:
         torch::Tensor temb,
         torch::Tensor rotary_emb_img,
         torch::Tensor rotary_emb_context,
+        torch::Tensor rotary_emb_single,
         std::optional<torch::Tensor> controlnet_block_samples = std::nullopt,
         std::optional<torch::Tensor> controlnet_single_block_samples = std::nullopt)
     {
@@ -96,6 +97,7 @@ public:
             from_torch(temb),
             from_torch(rotary_emb_img),
             from_torch(rotary_emb_context),
+            from_torch(rotary_emb_single)
             controlnet_block_samples.has_value() ? from_torch(controlnet_block_samples.value().contiguous()) : Tensor{},
             controlnet_single_block_samples.has_value() ? from_torch(controlnet_single_block_samples.value().contiguous()) : Tensor{}
         );
