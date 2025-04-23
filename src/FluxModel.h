@@ -156,6 +156,7 @@ public:
         Tensor temb,
         Tensor rotary_emb_img,
         Tensor rotary_emb_context,
+        Tensor rotary_emb_single,
         Tensor controlnet_block_samples,
         Tensor controlnet_single_block_samples);
     void setAttentionImpl(AttentionImpl impl);
