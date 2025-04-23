@@ -880,6 +880,7 @@ std::tuple<Tensor, Tensor> FluxModel::forward_layer(
         Tensor temb,
         Tensor rotary_emb_img,
         Tensor rotary_emb_context,
+        Tensor rotary_emb_single,
         Tensor controlnet_block_samples,
         Tensor controlnet_single_block_samples) {
 
@@ -894,10 +895,9 @@ std::tuple<Tensor, Tensor> FluxModel::forward_layer(
     else {
         std::tie(hidden_states, encoder_hidden_states) = single_transformer_blocks.at(layer - transformer_blocks.size())->forward(
             hidden_states,
-            encoder_hidden_states,
             temb,
-            rotary_emb_img,
-            rotary_emb_context, 0.0f);
+            rotary_emb_single,
+        );
     }
 
     const int txt_tokens = encoder_hidden_states.shape[1];
