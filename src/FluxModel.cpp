@@ -893,7 +893,7 @@ std::tuple<Tensor, Tensor> FluxModel::forward_layer(
             rotary_emb_context, 0.0f);
     }
     else {
-        std::tie(hidden_states, encoder_hidden_states) = single_transformer_blocks.at(layer - transformer_blocks.size())->forward(
+        std::tie(hidden_states) = single_transformer_blocks.at(layer - transformer_blocks.size())->forward(
             hidden_states,
             temb,
             rotary_emb_single
